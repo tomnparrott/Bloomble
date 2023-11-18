@@ -1,0 +1,488 @@
+*{
+  box-sizing: border-box;
+
+}
+
+body {
+
+  
+    font-family: 'Poppins', sans-serif;
+    /* background-color: #F3EBFF; */
+    background: linear-gradient(165deg, white, rgb(245, 242, 250) 60%, rgb(245, 248, 248));
+    color: white;
+    text-align: center;
+    
+}
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s ease;
+  padding-top: 40px;
+  padding-right: 100px;
+  z-index: 1;
+}
+
+header.sticky{
+  padding: 5px;
+  padding-right: 100px;
+  background: #fff;
+
+}
+
+header .logo{
+  position: relative;
+  font-weight: 700;
+  color:  #fff;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: 0.6s; 
+}
+
+header ul{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul li{
+  position: relative;
+  list-style:none;
+}
+
+header ul li a
+{
+  position: relative;
+  margin: 0 15px;
+  text-decoration: none;
+  color: #0b0b0b;
+  letter-spacing: 2px;
+  font-weight: 500px;
+  transition: 0.5s;
+  text-align: center;
+}
+
+header.sticky ul li a{
+  color: #000;
+}
+
+header ul li a:hover {
+  color: pink;
+  margin: 20px;
+}
+
+header ul li a:active {
+  color: pink;
+}
+
+.logo{
+    width: 100px;
+    margin-top: 150px;
+}
+
+.logo1{
+    width: 100px;
+    margin-left: 20px;
+    margin-bottom: 0px;
+}
+
+h1 {
+  margin: 0;
+  color: rgba(22, 24, 22, 0.729);
+}
+
+h2{
+  margin: 0;
+}
+
+#wordleGrid {
+  max-width: 350px;
+  margin: 20px auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.cell {
+  border: 2.5px solid #aeaeb3;
+  height: 58px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: rgba(22, 24, 22, 0.729);
+  background-color: #ffffff;
+  border-radius: 5px;
+}
+
+.cell.active {
+  border: 2px solid black; /* Or any other style you prefer for the active cell */
+  transform: scale(1.1); /* Slightly enlarge */
+  transition: transform 0.2s; /* Animation effect */
+}  
+
+#keyboardContainer {
+  /* max-width: 600px; */
+  margin: 0 auto;
+}
+
+.key {
+  margin: 4px 6px 0px 0px;
+  /* padding: px 6px; */
+  font-size: 1.25em;
+  font-weight: bold;
+  border: 1px solid #D3D6DA;
+  background-color: #d3d6da;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  width: 40px;
+  height: 58px;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.correct {
+  background-color: #6AAA64; /* Green for correct letter and position */
+}
+
+.present {
+  background-color: #c9b458; /* Yellow for correct letter but wrong position */
+}
+
+.absent {
+  background-color: #787C7E; /* Dark grey for absent letter */
+}
+
+.wide {
+  width: 80px;
+}
+
+/* Modal Styles */
+
+/* Initially show the explanation modal */
+#explanationModal {
+  display: block; /* Or use JavaScript to set this property when the page loads */
+}
+
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  z-index: 5; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  opacity: 0; /* Start with the modal being transparent */
+  transition: opacity 0.4s ease-in-out; /* Smooth transition for the fade-in effect */
+}
+
+.modal.show {
+  opacity: 1; /* Full opacity when the modal is shown */
+  
+}
+
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 3% auto; /* 15% from the top and centered */
+  padding: 50px;
+  border: 1px solid #888;
+  width: 45%; /* Could be more or less, depending on screen size */
+  color: rgba(22, 24, 22, 0.729);
+  border-radius: 10px;
+  /* overflow: scroll; */
+
+}
+
+.close-button {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close-button1 {
+  color: #aaa;
+  /* float: right; */
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close-button1:hover,
+.close-button1:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#shareButton {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 15px 30px; /* Size of the button */
+  border: none; /* No border */
+  border-radius: 50px; /* Rounded edges */
+  font-size: 18px; /* Size of the text */
+  font-weight: bold; /* Make text bold */
+  cursor: pointer; /* Cursor to pointer to indicate it's clickable */
+  box-shadow: 0 4px 8px #00000033; /* Shadow effect for depth */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transition for effects */
+  outline: none; /* Remove the outline to keep the design clean */
+  margin-top: 30px;
+}
+
+#playButton:hover, #playButton:focus {
+  background-color: #66BB6A; /* Lighter green background on hover/focus */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Larger shadow on hover/focus */
+}
+
+#playButton {
+  background-color: #4CAF50; /* Green background */
+  color: white; /* White text */
+  padding: 15px 30px; /* Size of the button */
+  border: none; /* No border */
+  border-radius: 50px; /* Rounded edges */
+  font-size: 18px; /* Size of the text */
+  font-weight: bold; /* Make text bold */
+  cursor: pointer; /* Cursor to pointer to indicate it's clickable */
+  box-shadow: 0 4px 8px #00000033; /* Shadow effect for depth */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Transition for effects */
+  outline: none; /* Remove the outline to keep the design clean */
+  margin-top: 30px;
+}
+
+#playButton:hover, #playButton:focus {
+  background-color: #66BB6A; /* Lighter green background on hover/focus */
+  box-shadow: 0 6px 12px #0000004d; /* Larger shadow on hover/focus */
+}
+
+#statisticsDisplay {
+  max-width: 500px; /* Restrict the width of the statistics display */
+  margin: 20px auto; /* Center the container */
+}
+
+/* Center each statistic number above its label */
+.statistics-section div {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px; /* Spacing between statistic items */
+}
+
+/* Style for the statistic number */
+.statistics-section span {
+  font-size: 2rem; /* Larger font size for the number */
+  color: black; /* Color of the number */
+  font-weight: bold; /* Make the number bold */
+}
+
+/* Style for the statistic label (Played, Wins, etc.) */
+.statistics-section label, .statistics-section h4 {
+  display: block; /* Ensure the label is on a new line */
+  font-size: 1rem; /* Smaller font size for the label */
+  color: #161816ba; /* Color of the label */
+  font-weight: normal; /* Regular font weight for the label */
+  margin-top: 5px; /* Space between the number and the label */
+  text-transform: uppercase; /* Uppercase for the label */
+}
+
+
+
+
+/* Add to your style.css */
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+}
+
+.progress-bar-container label {
+  width: 60px;
+  text-align: right;
+}
+
+progress {
+  width: 100%;
+  margin: 0 10px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+}
+
+progress::-webkit-progress-value {
+  background-color: #6aaa64;
+}
+
+progress::-moz-progress-bar {
+  background-color: #6aaa64;
+}
+
+.widget-button {
+  /* Add styles for your widget buttons */
+  background: #f5f5f5;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px #00000033;
+  margin: 10px;
+  position: fixed; /* or absolute */
+  top: 160px; /* adjust as needed */
+  right: 20px; /* adjust as needed */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000c9; /* Semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font-size: 1.5em;
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+.hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 900px){
+
+  .hamburger{
+    display: block;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+
+  h1{
+    color: rgba(32, 32, 32, 0.832);
+  }
+  h2{
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      line-height: 100%;
+  }
+  
+  .modal {
+    margin-top: 100px;
+    overflow: auto;
+    text-align: justify;
+  }
+
+  .modal .close-button1{
+    text-align: center;
+  }
+
+
+  .modal-content{
+    width: 98%;
+    padding: 46px;
+    line-height: 99%;
+  }
+
+
+  .logo1{
+    width: 0px;
+    }
+
+  
+  .logo{
+    margin-bottom: 0;
+    padding: 0;
+    border: 0;
+    margin-top: 80px;
+    width: 50px;
+  }
+
+  #wordleGrid {
+    max-width: auto;
+    margin: auto auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+  }
+
+  .widget-button{
+    display: none;  
+  }
+
+  
+.cell {
+  border: 1.7px solid #aeaeb3;
+  height: 65px;
+  font-size: 2.5em;
+  font-weight:300;
+}
+
+#keyboardContainer {
+  padding-top: 5px;
+  margin: 0.1px 0.1px;
+}
+
+.key {
+  margin: 1px 1px 0px 0px;
+  font-size: 1.25em;
+  font-weight: bold;
+  border: 1px solid #D3D6DA;
+  background-color: #d3d6da;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+  width: 35px;
+  height: 38px;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+  padding: 0;
+  color: #00000098;
+}
+
+.wide{
+  width: auto;
+}
+
+.statistics-section span {
+  font-size: 1rem; /* Larger font size for the number */
+  color: black; /* Color of the number */
+  font-weight:normal; /* Make the number bold */
+  margin-top: 3px;
+}
+
+
+}
+
