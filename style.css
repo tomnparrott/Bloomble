@@ -1,17 +1,13 @@
 *{
   box-sizing: border-box;
-
 }
 
-body {
-
-  
+body{
     font-family: 'Poppins', sans-serif;
     /* background-color: #F3EBFF; */
     background: linear-gradient(165deg, white, rgb(245, 242, 250) 60%, rgb(245, 248, 248));
     color: white;
-    text-align: center;
-    
+    text-align: center;    
 }
 
 header{
@@ -32,7 +28,6 @@ header.sticky{
   padding: 5px;
   padding-right: 100px;
   background: #fff;
-
 }
 
 header .logo{
@@ -473,7 +468,19 @@ progress::-moz-progress-bar {
 }
 
 .wide{
-  width: auto;
+    width:100px;
+  }
+
+.correct {
+  background-color: #6AAA64; /* Green for correct letter and position */
+}
+
+.present {
+  background-color: #c9b458; /* Yellow for correct letter but wrong position */
+}
+
+.absent {
+  background-color: #787C7E; /* Dark grey for absent letter */
 }
 
 .statistics-section span {
@@ -482,7 +489,16 @@ progress::-moz-progress-bar {
   font-weight:normal; /* Make the number bold */
   margin-top: 3px;
 }
+}
 
-
+@media (max-width: 376px) {
+  .key{
+    font-size: 1em;
+    width: 30px;
+    height: 40px;
+  }
+  .key.wide{
+    width:100px;
+  }
 }
 
