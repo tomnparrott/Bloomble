@@ -601,7 +601,7 @@ const wordBank = [
     }
     
     function generateResultsString() {
-        let resultsString = 'Can you beat my Bloomble score:\n';
+        let resultsString = 'Can you beat my Bloomble score:\n\n';
         guesses.forEach(guess => {
             for (let i = 0; i < guess.length; i++) {
                 if (guess[i] === targetWord[i]) {
@@ -614,7 +614,7 @@ const wordBank = [
             }
             resultsString += '\n';
         });
-        return resultsString;
+        return resultsString + '\nTry and beat my score at wwww.tutorbloom.com/bloomble.html and share it with the hashtag #Bloomble';
     }
     
     function copyResultsToClipboard() {
